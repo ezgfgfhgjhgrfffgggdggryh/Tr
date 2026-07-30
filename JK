@@ -1,0 +1,17 @@
+local plr = game.Players.LocalPlayer
+local L = game:GetService("Lighting")
+
+-- ตั้งค่าที่ต้องการตรงนี้
+plr.Character.Humanoid.WalkSpeed = 50 -- ความเร็ว
+plr.Character.Humanoid.JumpPower = 80 -- ความสูงกระโดด
+
+-- เปิด FPS Boost
+L.GlobalShadows = false
+L.FogEnd = 1e5
+for _,v in ipairs(L:GetChildren()) do if v:IsA("PostEffect") then v.Enabled = false end
+for _,v in ipairs(workspace:GetDescendants()) do 
+    if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Fire") then v.Enabled = false
+    elseif v:IsA("Decal") or v:IsA("Texture") then v.Transparency = 1
+    elseif v:IsA("BasePart") then v.Material = Enum.Material.Plastic v.Reflectance = 0 end 
+end
+print("Speed 50 | Jump 80 | FPS ON")
